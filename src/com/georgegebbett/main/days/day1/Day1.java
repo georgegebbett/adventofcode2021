@@ -28,26 +28,21 @@ public class Day1 {
             default -> System.out.println("NO!");
         }
 
-
     }
-
 
 }
 
 class SonarSweeper {
 
-    private ArrayList<Integer> inputValues = new ArrayList<>();
+    private final ArrayList<Integer> inputValues = new ArrayList<>();
+    private int increases = 0;
 
     SonarSweeper(String inputFilePath) throws FileNotFoundException {
-        File inputFile = new File(inputFilePath);
-        Scanner fileReader = new Scanner(inputFile);
+        Scanner fileReader = new Scanner(new File(inputFilePath));
         while (fileReader.hasNextLine()) inputValues.add(Integer.parseInt(fileReader.nextLine()));
-
     }
 
     public int part1Depths() {
-        int increases = 0;
-
         for (int x = 0; x < inputValues.size() - 1; x++) {
             if (inputValues.get(x) < inputValues.get(x + 1)) increases++;
         }
@@ -57,8 +52,6 @@ class SonarSweeper {
     }
 
     public int part2Depths() {
-        int increases = 0;
-
         for (int x = 1; x < inputValues.size() - 2; x++) {
             if (inputValues.get(x) + inputValues.get(x + 1) + inputValues.get(x + 2) > inputValues.get(x - 1) + inputValues.get(x) + inputValues.get(x + 1))
                 increases++;
