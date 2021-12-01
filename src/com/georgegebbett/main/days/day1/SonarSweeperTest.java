@@ -22,4 +22,5 @@ class SonarSweeperTest {
 
         assertEquals(testSweeper.part2Depths(), 5);
     }
+
 }

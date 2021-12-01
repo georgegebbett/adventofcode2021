@@ -36,28 +36,20 @@ public class Day1 {
 
 class SonarSweeper {
 
-    private File inputFile;
-    private Scanner fileReader;
+    private ArrayList<Integer> inputValues = new ArrayList<>();
 
     SonarSweeper(String inputFilePath) throws FileNotFoundException {
-        this.inputFile = new File(inputFilePath);
-        if (!inputFile.exists()) throw new FileNotFoundException("Input file not found");
-        this.fileReader = new Scanner(inputFile);
+        File inputFile = new File(inputFilePath);
+        Scanner fileReader = new Scanner(inputFile);
+        while (fileReader.hasNextLine()) inputValues.add(Integer.parseInt(fileReader.nextLine()));
+
     }
 
     public int part1Depths() {
-
         int increases = 0;
 
-        int lastDepth = Integer.parseInt(this.fileReader.nextLine());
-        int currentDepth = Integer.parseInt(this.fileReader.nextLine());
-
-        if (currentDepth > lastDepth) increases++;
-
-        while (this.fileReader.hasNextLine()) {
-            lastDepth = currentDepth;
-            currentDepth = Integer.parseInt(this.fileReader.nextLine());
-            if (currentDepth > lastDepth) increases++;
+        for (int x = 0; x < inputValues.size() - 1; x++) {
+            if (inputValues.get(x) < inputValues.get(x + 1)) increases++;
         }
 
         return increases;
@@ -65,39 +57,14 @@ class SonarSweeper {
     }
 
     public int part2Depths() {
-
         int increases = 0;
 
-        ArrayList<Integer> measuringWindow = new ArrayList<>(3);
-
-        measuringWindow.add(Integer.parseInt(this.fileReader.nextLine()));
-        measuringWindow.add(Integer.parseInt(this.fileReader.nextLine()));
-        measuringWindow.add(Integer.parseInt(this.fileReader.nextLine()));
-
-        int lastSum = measuringWindow.get(0) + measuringWindow.get(1) + measuringWindow.get(2);
-
-        measuringWindow.set(0, measuringWindow.get(1));
-        measuringWindow.set(1, measuringWindow.get(2));
-        measuringWindow.set(2, Integer.parseInt(this.fileReader.nextLine()));
-
-        int currentSum = measuringWindow.get(0) + measuringWindow.get(1) + measuringWindow.get(2);
-
-        if (currentSum > lastSum) increases++;
-
-        while (this.fileReader.hasNextLine()) {
-            lastSum = currentSum;
-
-            measuringWindow.set(0, measuringWindow.get(1));
-            measuringWindow.set(1, measuringWindow.get(2));
-            measuringWindow.set(2, Integer.parseInt(this.fileReader.nextLine()));
-
-            currentSum = measuringWindow.get(0) + measuringWindow.get(1) + measuringWindow.get(2);
-
-            if (currentSum > lastSum) increases++;
+        for (int x = 1; x < inputValues.size() - 2; x++) {
+            if (inputValues.get(x) + inputValues.get(x + 1) + inputValues.get(x + 2) > inputValues.get(x - 1) + inputValues.get(x) + inputValues.get(x + 1))
+                increases++;
         }
 
         return increases;
-
     }
 
 }
