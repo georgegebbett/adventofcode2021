@@ -10,21 +10,15 @@ public class Day1 {
 
         String inputFilePath = "/Users/george/IdeaProjects/adventofcode2021/src/com/georgegebbett/main/days/day1/input.txt";
 
-        Scanner optionReader = new Scanner(System.in);
-
         System.out.println("Which part would you like to see?");
 
-        String partChoice = optionReader.nextLine();
+        String partChoice = new Scanner(System.in).nextLine();
+
+        SonarSweeper sweeper = new SonarSweeper(inputFilePath);
 
         switch (partChoice) {
-            case "1" -> {
-                SonarSweeper part1Sweeper = new SonarSweeper(inputFilePath);
-                System.out.printf("There are %d increases in depth", part1Sweeper.part1Depths());
-            }
-            case "2" -> {
-                SonarSweeper part2Sweeper = new SonarSweeper(inputFilePath);
-                System.out.printf("There are %d increases in depth", part2Sweeper.part2Depths());
-            }
+            case "1" -> System.out.printf("There are %d increases in depth", sweeper.part1Depths());
+            case "2" -> System.out.printf("There are %d increases in depth", sweeper.part2Depths());
             default -> System.out.println("NO!");
         }
 
