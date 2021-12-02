@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Day2 {
 
-    public static void main(String[] args) throws SubmarineException {
+    public static void main() throws SubmarineException {
 
         String inputFilePath = "/Users/george/IdeaProjects/adventofcode2021/src/com/georgegebbett/main/days/day2/input.txt";
 
@@ -77,8 +77,3 @@ class Submarine {
     }
 }
 
-class SubmarineException extends Exception {
-    SubmarineException(String errorMessage) {
-        super(errorMessage);
-    }
-}
