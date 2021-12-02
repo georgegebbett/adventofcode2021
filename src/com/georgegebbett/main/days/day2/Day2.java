@@ -1,5 +1,7 @@
 package com.georgegebbett.main.days.day2;
 
+import com.georgegebbett.main.runner.ChristmasException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.Scanner;
 
 public class Day2 {
 
-    public static void main() throws SubmarineException {
+    public static void main() throws SubmarineException, ChristmasException {
 
         String inputFilePath = "/Users/george/IdeaProjects/adventofcode2021/src/com/georgegebbett/main/days/day2/input.txt";
 
@@ -20,7 +22,7 @@ public class Day2 {
         switch (partChoice) {
             case "1" -> System.out.printf("The part one answer is %d", ourSub.part1());
             case "2" -> System.out.printf("The part two answer is %d", ourSub.part2());
-            default -> System.out.println("NO!");
+            default -> throw new ChristmasException("Choosing an invalid part isn't very Christmassy.");
         }
 
     }
