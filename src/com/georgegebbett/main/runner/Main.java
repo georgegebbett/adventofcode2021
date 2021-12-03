@@ -3,6 +3,7 @@ package com.georgegebbett.main.runner;
 import com.georgegebbett.main.days.day1.Day1;
 import com.georgegebbett.main.days.day2.Day2;
 import com.georgegebbett.main.days.day2.SubmarineException;
+import com.georgegebbett.main.days.day3.Day3;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -19,6 +20,7 @@ public class Main {
         switch (dayChoice) {
             case "1" -> Day1.main();
             case "2" -> Day2.main();
+            case "3" -> Day3.main();
             default -> throw new ChristmasException("Choosing an invalid day isn't very christmassy of you");
         }
     }
